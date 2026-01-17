@@ -1,0 +1,31 @@
+🚀 Prefijos Principales
+feat: (Feature) – Cuando agregas una nueva funcionalidad.
+
+Ejemplo: feat: add product connection to laragon
+
+fix: – Cuando arreglas un error o bug.
+
+Ejemplo: fix: db connection timeout error
+
+docs: – Cambios solo en la documentación (como el README o comentarios).
+
+Ejemplo: docs: update backend folder structure in readme
+
+style: – Cambios que no afectan la lógica (espacios, formateo, punto y coma).
+
+Ejemplo: style: format db.js code for better readability
+
+refactor: – Código que ni arregla un error ni añade una función, sino que lo mejoras o limpias.
+
+Ejemplo: refactor: move db logic to config folder
+
+🛠️ Prefijos de Mantenimiento
+chore: – Tareas de mantenimiento o actualización de herramientas (como instalar mysql2).
+
+Ejemplo: chore: install dotenv and mysql2 dependencies
+
+test: – Cuando añades o corriges pruebas.
+
+perf: – Cambios para mejorar el rendimiento (Performance).
+
+build: – Cambios que afectan el sistema de construcción o dependencias externas.
