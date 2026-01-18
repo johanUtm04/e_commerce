@@ -12,7 +12,7 @@ async function startServer() {
 
         // Si la DB responde, encendemos el servidor Express
         app.listen(PORT, () => {
-            console.log(`🚀 Servidor listo en: http://localhost:${PORT}`);
+            console.log(` Servidor listo en: http://localhost:${PORT}`);
         });
     } catch (error) {
         console.error('Error:', error.message);
