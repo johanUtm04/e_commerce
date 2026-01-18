@@ -1,4 +1,4 @@
-🚀 Prefijos Principales
+🚀 Prefijos para commits
 feat: (Feature) – Cuando agregas una nueva funcionalidad.
 
 Ejemplo: feat: add product connection to laragon
@@ -29,3 +29,7 @@ test: – Cuando añades o corriges pruebas.
 perf: – Cambios para mejorar el rendimiento (Performance).
 
 build: – Cambios que afectan el sistema de construcción o dependencias externas.
+
+
+🔰Arranque de proyecto:
+Tienes que estar Ubicado en /backend y usar => node src/server.js 
