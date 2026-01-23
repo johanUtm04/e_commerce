@@ -25,6 +25,12 @@ class ProductService {
         return rows;
     }
 
+    async updateStock(){
+                                                                                              //Parameters
+        const [result] = await db.query('UPDATE products SET stock = stock - ? WHERE id = ?', [quantity, id]);
+        return result.affectedRows > 0;
+    }
+
 
 }
 
