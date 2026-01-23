@@ -21,8 +21,12 @@ class ProductService {
     }
 
     async searchByName(term){
+         try {
         const [rows] = await db.query('SELECT * FROM products WHERE name LIKE ?', [`%{term}%`]);
         return rows;
+        } catch(error){
+            throw new Error('Error al Buscar por Nombre: ' + error.message);
+        }
     }
 
     async updateStock(){
@@ -31,7 +35,18 @@ class ProductService {
         return result.affectedRows > 0;
     }
 
-
+    async emptyProductStock(productId){
+    try {
+        const [result] = await db.query(
+            'UPDATE products SET stock = 0 WHERE order_id = ?',
+            [productId]
+        );
+        return result.affectedRows > 0;
+    } catch (error) {
+        throw new Error('Error técnico al vaciar stock: ' + error.message);
+    }
+    
+    }
 }
 
 module.exports = new ProductService();
