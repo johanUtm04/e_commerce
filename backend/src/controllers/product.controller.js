@@ -21,6 +21,30 @@ class ProductController {
             });
         }
     }
+
+    async getProductById(req, res) {
+        try {
+            console.log('---  Solicitud recibida en el Controlador, Buscar producto en especifico ---');
+
+            // Call the service
+            const {id} = req.params;
+            const product = await productService.getSpecificProduct(id);
+
+            if (!product) {
+                return res.status(404).json({message: 'Producto no encontrado'});
+
+            }
+            res.json(product);
+        } catch (error) {
+            console.error('---  ERROR EN EL CONTROLADOR:', error.message);
+            
+            res.status(500).json({
+                message: 'Error al obtener el producto en especifico',
+                error: error.message
+            });
+        }
+    }
+
 }
 
 module.exports = new ProductController();
