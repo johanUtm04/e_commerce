@@ -1,5 +1,7 @@
+const { search } = require('../app');
 const db = require('../config/db');
 
+//Expert that talks with Laragon
 class ProductService {
     async getAllProducts(){
         try {
@@ -9,15 +11,21 @@ class ProductService {
             throw new Error ('Error al obtener los productos, el error especifico es el siguiente: ' + error.message);
         }
     }
-
-        async getSpecificProduct(id){
-        try {
-            const [rows] = await db.query('SELECT * FROM products WHERE id = ?',[id]);
-            return rows[0]; //Return first element of the array
-        } catch (error) {
-            throw new Error ('Error al obtener producto especifico ' + error.message);
-        }
+    async getSpecificProduct(id){
+    try {
+        const [rows] = await db.query('SELECT * FROM products WHERE id = ?',[id]);
+        return rows[0]; //Return first element of the array
+    } catch (error) {
+        throw new Error ('Error al obtener producto especifico ' + error.message);
     }
+    }
+
+    async searchByName(term){
+        const [rows] = await db.query('SELECT * FROM products WHERE name LIKE ?', [`%{term}%`]);
+        return rows;
+    }
+
+
 }
 
 module.exports = new ProductService();
