@@ -60,6 +60,21 @@ class ProductService {
             throw new Error('Error al crear producto: ' + error.message);
         }
     }
+
+    async update(id, updateData) {
+        try {
+            const { name, price, stock, image, status } = updateData;
+            const [result] = await db.query(
+                'UPDATE products SET name = ?, price = ?, stock = ?, image = ?, status = ? WHERE id = ?',
+                [name, price, stock, image, status, id]
+            );
+            return result.affectedRows > 0;
+        } catch (error) {
+            throw new Error('Error al actualizar producto: ' + error.message);
+        }
+    }
+
+
 }
 
 module.exports = new ProductService();
