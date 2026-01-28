@@ -29,7 +29,7 @@ class ProductService {
         }
     }
 
-    async updateStock(){
+    async updateStock(productData){
                                                                                               //Parameters
         const [result] = await db.query('UPDATE products SET stock = stock - ? WHERE id = ?', [quantity, id]);
         return result.affectedRows > 0;
@@ -46,6 +46,19 @@ class ProductService {
         throw new Error('Error técnico al vaciar stock: ' + error.message);
     }
     
+    }
+
+    async create(productData) {
+        try {
+            const { name, category_id, price, stock, image } = productData;
+            const [result] = await db.query(
+                'INSERT INTO products (name, category_id, price, stock, image, status) VALUES (?, ?, ?, ?, ?, "active")',
+                [name, category_id, price, stock, image]
+            );
+            return result.insertId;
+        } catch (error) {
+            throw new Error('Error al crear producto: ' + error.message);
+        }
     }
 }
 
