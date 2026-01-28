@@ -74,6 +74,15 @@ class ProductService {
         }
     }
 
+    async delete(id) {
+        try {
+            const [result] = await db.query('UPDATE products SET status = "inactive" WHERE id = ?', [id]);
+            return result.affectedRows > 0;
+        } catch (error) {
+            throw new Error('Error al desactivar producto: ' + error.message);
+        }
+    }
+
 
 }
 
